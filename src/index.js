@@ -35,18 +35,16 @@ const characterDetails = (id) => {
       const animalVotes = document.createElement("p");
       animalVotes.innerHTML = data.votes;
       detailedInfo.appendChild(animalVotes);
-    });
-};
 
-const updateVotes = () => {
-  const votesInput = document.querySelector("#votes");
-  const formVotes = document.querySelector("form#votes-form");
-  fetch(`http://localhost:3000/characters/`)
-    .then((res) => res.json())
-    .then((data) => {
-      formVotes.addEventListener("submit", (e) => {
-        e.preventDefault();
-        data.votes = votesInput.value;
+      const inputVotes = document.createElement("input");
+      const button = document.createElement("button");
+      inputVotes.innerHTML = data.votes;
+      button.innerHTML = `Add votes`;
+      detailedInfo.appendChild(inputVotes);
+      detailedInfo.appendChild(button);
+
+      button.addEventListener("click", () => {
+        animalVotes.innerHTML = inputVotes.value;
       });
     });
 };
