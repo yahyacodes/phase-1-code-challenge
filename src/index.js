@@ -1,5 +1,6 @@
 const character = document.querySelector("#character-bar");
 
+// fetch the data from characters and display them on DOM
 fetch("http://localhost:3000/characters")
   .then((res) => res.json())
   .then((data) => {
@@ -17,6 +18,7 @@ fetch("http://localhost:3000/characters")
     });
   });
 
+// fetch data from characters and display their details
 const characterDetails = (id) => {
   const detailedInfo = document.querySelector("div#detailed-info");
   detailedInfo.innerHTML = "";
@@ -36,6 +38,7 @@ const characterDetails = (id) => {
       animalVotes.innerHTML = data.votes;
       detailedInfo.appendChild(animalVotes);
 
+      // Adding  votes atfer form submission
       const inputVotes = document.createElement("input");
       const button = document.createElement("button");
       inputVotes.innerHTML = data.votes;
